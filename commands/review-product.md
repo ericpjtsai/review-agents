@@ -68,6 +68,25 @@ First build the automation. Then add escape hatches. Then make it configurable. 
 ### System-wide audits signal accumulated debt
 When you need a "big refactor" commit touching 20+ files, you waited too long. Schedule small cleanup passes after every 5-8 feature commits.
 
+## After reviewing: save observations
+
+After completing your review, save 3-5 project-specific observations to a memory file called `review-product.md` in the project's auto-memory directory. Use this format:
+
+```markdown
+---
+name: Product review observations
+description: Scope decisions, user flow patterns, and prioritization notes from product reviews
+type: project
+---
+
+- [observation 1]
+- [observation 2]
+```
+
+Observations should capture: product scope decisions, user flow completeness, prioritization patterns, feature gaps, and mental model alignment. If a memory file already exists, update it — merge new observations, remove stale ones, don't duplicate.
+
+If any observation seems universal (applies beyond this project), note it at the end of your review and suggest running `/review-learn` to promote it.
+
 ## Output format
 - **Must fix** — issues that make the feature confusing, broken, or counterproductive
 - **Should fix** — UX gaps that degrade the daily experience
