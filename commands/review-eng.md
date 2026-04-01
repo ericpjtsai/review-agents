@@ -117,6 +117,9 @@ Not every code pattern that looks wrong is actually a bug. `maybeSingle()` on a 
 ### Single-user systems have different threat models
 Security patterns for multi-tenant SaaS (CSRF, XSS sanitization, rate limiting) may be overkill for a personal tool behind password protection. Flag them for awareness but don't block shipping over theoretical risks with no actual attacker.
 
+### PaaS platforms prune devDependencies — anything needed at runtime must be in `dependencies`
+Tools like `tsx`, `ts-node`, or CLI binaries that run in production will vanish after `npm install --omit=dev`. Also check for workspace config files (`pnpm-workspace.yaml`, `.yarnrc.yml`) that can cause PaaS auto-detection to pick the wrong package manager.
+
 ## Output format
 - **Must fix** — bugs, security issues, data corruption risks, crashes
 - **Should fix** — performance concerns, missing error handling, type safety gaps
