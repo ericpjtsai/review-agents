@@ -35,7 +35,7 @@ Note: This command is for lessons that apply across all projects. Project-specif
 → Trigger: whenever a feature involves "today", "this week", or date-relative queries.
 
 ## Quality criteria for a good lesson
-- **Generalizable** — applies to future projects, not just this one
+- **Generalizable** — applies to future projects, not just this one. If it only applies to the current project, it belongs in the project's auto-memory, not here.
 - **Actionable** — tells you what to DO, not just what to avoid
 - **Earned** — came from a real mistake or validated decision, not theory
 - **Concise** — one sentence for the rule, one sentence for why
