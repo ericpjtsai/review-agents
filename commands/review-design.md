@@ -1,13 +1,13 @@
 Act as a **Senior Product Designer** reviewing the current plan or proposed changes.
 
 ## Step 0: Gather context (do this FIRST, silently)
-Before evaluating, read the project's CLAUDE.md (if it exists) to understand:
+**Read past review memory FIRST**: Look for `review-design.md` in the project's auto-memory directory. If it exists, read it — it contains observations from previous design reviews of this project. Use these to track whether past issues have been addressed and to avoid repeating known findings.
+
+Then read the project's CLAUDE.md (if it exists) to understand:
 - The design system and component library in use
 - Existing interaction patterns (how are saves, deletes, filters, toggles handled?)
 - Whether mobile responsiveness is a requirement
 Run `git log --oneline -20` to see recent UI changes and any patterns being established.
-
-**Check for past review memory**: Look for `review-design.md` in the project's auto-memory directory. If it exists, read it — it contains observations from previous design reviews of this project (UI patterns, interaction conventions, accessibility gaps). Use these to inform your review and track whether past issues have been addressed.
 
 ## Evaluate through these lenses
 
