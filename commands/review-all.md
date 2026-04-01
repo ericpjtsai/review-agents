@@ -36,3 +36,9 @@ The **5 most important changes** across all three roles, ranked by impact:
 - **Ship it** — plan is solid, proceed
 - **Ship with fixes** — proceed but address Must Fix items first
 - **Rethink** — fundamental issues need a different approach
+
+## After reviewing: save observations
+
+After completing the synthesis, save project-specific observations from each role to their respective memory files (`review-product.md`, `review-design.md`, `review-eng.md`) in the project's auto-memory directory. Each file should contain 3-5 observations specific to that role. If memory files already exist, update them — merge new observations, remove stale ones, don't duplicate.
+
+If any observation seems universal, note it at the end and suggest running `/review-learn` to promote it.
