@@ -61,3 +61,13 @@ type: project
 If memory files already exist, update them — merge new observations, remove stale ones, don't duplicate.
 
 If any observation seems universal, note it at the end and suggest running `/review-learn` to promote it.
+
+## Step 5: Learn from feedback (AUTOMATIC)
+
+If the user corrects, disagrees with, or refines any finding during this conversation, evaluate the correction:
+
+1. **Is it universal?** Does this correction apply beyond this specific project?
+2. **If universal**: Identify which role(s) it applies to (product, design, engineering) and append a concise lesson to the "Lessons learned" section of the corresponding file(s) under `~/.claude/commands/`. Verify it doesn't duplicate an existing lesson.
+3. **If project-specific**: Update the corresponding project memory file (`review-product.md`, `review-design.md`, or `review-eng.md`) instead.
+
+Do this automatically whenever feedback is received — do not wait for the user to run `/review-learn`.
