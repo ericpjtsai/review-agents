@@ -120,6 +120,9 @@ Security patterns for multi-tenant SaaS (CSRF, XSS sanitization, rate limiting) 
 ### PaaS platforms prune devDependencies — anything needed at runtime must be in `dependencies`
 Tools like `tsx`, `ts-node`, or CLI binaries that run in production will vanish after `npm install --omit=dev`. Also check for workspace config files (`pnpm-workspace.yaml`, `.yarnrc.yml`) that can cause PaaS auto-detection to pick the wrong package manager.
 
+### Broad keyword scoring needs a title-level pre-filter to avoid false positives
+When scoring matches generic terms (CRM, AI-powered, data visualization) against job descriptions, non-relevant roles will score highly because their descriptions incidentally contain domain keywords. Always gate on title relevance *before* keyword scoring runs — a blocklist of non-target roles is cheaper and more reliable than tuning score thresholds.
+
 ## Output format
 - **Must fix** — bugs, security issues, data corruption risks, crashes
 - **Should fix** — performance concerns, missing error handling, type safety gaps
