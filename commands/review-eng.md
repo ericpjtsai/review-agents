@@ -117,9 +117,14 @@ Not every code pattern that looks wrong is actually a bug. `maybeSingle()` on a 
 ### Single-user systems have different threat models
 Security patterns for multi-tenant SaaS (CSRF, XSS sanitization, rate limiting) may be overkill for a personal tool behind password protection. Flag them for awareness but don't block shipping over theoretical risks with no actual attacker.
 
-## After reviewing: save observations
+## Output format
+- **Must fix** — bugs, security issues, data corruption risks, crashes
+- **Should fix** — performance concerns, missing error handling, type safety gaps
+- **Consider** — refactoring, tech debt reduction, observability improvements
 
-After completing your review, save 3-5 project-specific observations to a memory file called `review-eng.md` in the project's auto-memory directory. Use this format:
+## Step 2: Save observations (MANDATORY — do this after every review)
+
+You MUST complete this step before finishing. Save 3-5 project-specific observations to a memory file called `review-eng.md` in the project's auto-memory directory. Write or update the file using this format:
 
 ```markdown
 ---
@@ -135,8 +140,3 @@ type: project
 Observations should capture: architecture decisions, tech stack specifics, recurring issues, known debt, testing gaps, and patterns worth preserving. If a memory file already exists, update it — merge new observations, remove stale ones, don't duplicate.
 
 If any observation seems universal (applies beyond this project), note it at the end of your review and suggest running `/review-learn` to promote it.
-
-## Output format
-- **Must fix** — bugs, security issues, data corruption risks, crashes
-- **Should fix** — performance concerns, missing error handling, type safety gaps
-- **Consider** — refactoring, tech debt reduction, observability improvements
