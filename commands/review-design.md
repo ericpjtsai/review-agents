@@ -86,6 +86,12 @@ Width calculations, scroll behavior, viewport-relative positioning, and z-index 
 ### Component extraction follows pain
 Components get extracted after they're duplicated 3+ times. Better: extract on the second use.
 
+### Never use native `<datalist>` — always build a custom dropdown
+Browser rendering is inconsistent (Chrome is clunky, Safari barely filters), it can't be styled to match a design system, and it's sluggish with 100+ options. Build a custom dropdown with `bg-card border rounded-md shadow-md`, keyboard nav, and `role="listbox"` from the start.
+
+### ARIA attributes belong in the first implementation, not a follow-up
+Every custom interactive component (dropdown, combobox, dialog, tooltip) needs `role`, `aria-expanded`, `aria-activedescendant`, and `aria-label` on its first commit. Retrofitting costs the same effort as doing it upfront, but ships an inaccessible version in the meantime.
+
 ## Output format
 - **Must fix** — broken or confusing interactions, accessibility violations
 - **Should fix** — pattern inconsistencies, missing states, mobile breakage
