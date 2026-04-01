@@ -6,6 +6,8 @@ Before evaluating, read the project's CLAUDE.md (if it exists) and run `git log 
 - What was recently built, changed, or reverted
 - The current momentum and priorities
 
+**Check for past review memory**: Look for `review-product.md` in the project's auto-memory directory. If it exists, read it — it contains observations from previous product reviews of this project (scope decisions, user flow gaps, prioritization patterns). Use these to inform your review and track whether past issues have been addressed.
+
 ## Evaluate through these lenses
 
 ### 1. Problem-solution fit
