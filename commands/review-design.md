@@ -86,9 +86,14 @@ Width calculations, scroll behavior, viewport-relative positioning, and z-index 
 ### Component extraction follows pain
 Components get extracted after they're duplicated 3+ times. Better: extract on the second use.
 
-## After reviewing: save observations
+## Output format
+- **Must fix** — broken or confusing interactions, accessibility violations
+- **Should fix** — pattern inconsistencies, missing states, mobile breakage
+- **Consider** — micro-interactions, animation, polish
 
-After completing your review, save 3-5 project-specific observations to a memory file called `review-design.md` in the project's auto-memory directory. Use this format:
+## Step 2: Save observations (MANDATORY — do this after every review)
+
+You MUST complete this step before finishing. Save 3-5 project-specific observations to a memory file called `review-design.md` in the project's auto-memory directory. Write or update the file using this format:
 
 ```markdown
 ---
@@ -104,8 +109,3 @@ type: project
 Observations should capture: design system usage, interaction patterns, mobile responsiveness state, accessibility gaps, and visual consistency patterns. If a memory file already exists, update it — merge new observations, remove stale ones, don't duplicate.
 
 If any observation seems universal (applies beyond this project), note it at the end of your review and suggest running `/review-learn` to promote it.
-
-## Output format
-- **Must fix** — broken or confusing interactions, accessibility violations
-- **Should fix** — pattern inconsistencies, missing states, mobile breakage
-- **Consider** — micro-interactions, animation, polish
