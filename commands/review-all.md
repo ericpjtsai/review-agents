@@ -39,8 +39,25 @@ The **5 most important changes** across all three roles, ranked by impact:
 - **Ship with fixes** — proceed but address Must Fix items first
 - **Rethink** — fundamental issues need a different approach
 
-## After reviewing: save observations
+## Step 4: Save observations (MANDATORY — do this after every review)
 
-After completing the synthesis, save project-specific observations from each role to their respective memory files (`review-product.md`, `review-design.md`, `review-eng.md`) in the project's auto-memory directory. Each file should contain 3-5 observations specific to that role. If memory files already exist, update them — merge new observations, remove stale ones, don't duplicate.
+You MUST complete this step before finishing. Save project-specific observations from each role to their respective memory files in the project's auto-memory directory:
+- `review-product.md` — 3-5 product observations
+- `review-design.md` — 3-5 design observations
+- `review-eng.md` — 3-5 engineering observations
+
+Each file uses the same format:
+```markdown
+---
+name: [Role] review observations
+description: [Role-specific description]
+type: project
+---
+
+- [observation 1]
+- [observation 2]
+```
+
+If memory files already exist, update them — merge new observations, remove stale ones, don't duplicate.
 
 If any observation seems universal, note it at the end and suggest running `/review-learn` to promote it.
