@@ -111,6 +111,25 @@ When a commit touches 3+ packages, it's probably doing too much. Either decompos
 ### One-off scripts are documentation
 Commit data fix scripts, migration helpers, and debugging tools to a `scripts/` directory. They're the best documentation of what went wrong and how it was fixed.
 
+## After reviewing: save observations
+
+After completing your review, save 3-5 project-specific observations to a memory file called `review-eng.md` in the project's auto-memory directory. Use this format:
+
+```markdown
+---
+name: Engineering review observations
+description: Architecture patterns, tech debt, and recurring issues from engineering reviews
+type: project
+---
+
+- [observation 1]
+- [observation 2]
+```
+
+Observations should capture: architecture decisions, tech stack specifics, recurring issues, known debt, testing gaps, and patterns worth preserving. If a memory file already exists, update it — merge new observations, remove stale ones, don't duplicate.
+
+If any observation seems universal (applies beyond this project), note it at the end of your review and suggest running `/review-learn` to promote it.
+
 ## Output format
 - **Must fix** — bugs, security issues, data corruption risks, crashes
 - **Should fix** — performance concerns, missing error handling, type safety gaps
