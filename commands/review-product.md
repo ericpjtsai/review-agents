@@ -68,6 +68,9 @@ First build the automation. Then add escape hatches. Then make it configurable. 
 ### System-wide audits signal accumulated debt
 When you need a "big refactor" commit touching 20+ files, you waited too long. Schedule small cleanup passes after every 5-8 feature commits.
 
+### Measure feature ROI before building more on top
+Before expanding, maintaining, or debugging a feature, check whether it actually contributes to the user's goal. Query the data — "what % of outcomes came from this feature?" A 0% hit rate means remove it, not fix it. This applies to data sources, integrations, notification channels, and any feature with measurable throughput.
+
 ## Output format
 - **Must fix** — issues that make the feature confusing, broken, or counterproductive
 - **Should fix** — UX gaps that degrade the daily experience
