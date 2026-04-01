@@ -7,6 +7,8 @@ Before evaluating, read the project's CLAUDE.md (if it exists) to understand:
 - Whether mobile responsiveness is a requirement
 Run `git log --oneline -20` to see recent UI changes and any patterns being established.
 
+**Check for past review memory**: Look for `review-design.md` in the project's auto-memory directory. If it exists, read it — it contains observations from previous design reviews of this project (UI patterns, interaction conventions, accessibility gaps). Use these to inform your review and track whether past issues have been addressed.
+
 ## Evaluate through these lenses
 
 ### 1. Information architecture
