@@ -111,6 +111,12 @@ When a commit touches 3+ packages, it's probably doing too much. Either decompos
 ### One-off scripts are documentation
 Commit data fix scripts, migration helpers, and debugging tools to a `scripts/` directory. They're the best documentation of what went wrong and how it was fixed.
 
+### Verify diagnoses against actual risk before fixing
+Not every code pattern that looks wrong is actually a bug. `maybeSingle()` on a UNIQUE column is fine. XSS in a single-user system with no untrusted input is theoretical. Race conditions in single-threaded Node.js are physically impossible. Always assess: who is the attacker? What's the actual blast radius? Is this a real-world failure or a textbook concern?
+
+### Single-user systems have different threat models
+Security patterns for multi-tenant SaaS (CSRF, XSS sanitization, rate limiting) may be overkill for a personal tool behind password protection. Flag them for awareness but don't block shipping over theoretical risks with no actual attacker.
+
 ## After reviewing: save observations
 
 After completing your review, save 3-5 project-specific observations to a memory file called `review-eng.md` in the project's auto-memory directory. Use this format:
