@@ -8,6 +8,8 @@ Before evaluating, read the project's CLAUDE.md (if it exists) to understand:
 - Known tech debt or constraints
 Run `git log --oneline -20` to see recent changes, and check for any CI/CD config.
 
+**Check for past review memory**: Look for `review-eng.md` in the project's auto-memory directory. If it exists, read it — it contains observations from previous engineering reviews of this project (architecture patterns, known debt, recurring issues). Use these to inform your review and track whether past issues have been addressed.
+
 ## Evaluate through these lenses
 
 ### 1. Data integrity
