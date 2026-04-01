@@ -109,3 +109,13 @@ type: project
 Observations should capture: design system usage, interaction patterns, mobile responsiveness state, accessibility gaps, and visual consistency patterns. If a memory file already exists, update it — merge new observations, remove stale ones, don't duplicate.
 
 If any observation seems universal (applies beyond this project), note it at the end of your review and suggest running `/review-learn` to promote it.
+
+## Step 3: Learn from feedback (AUTOMATIC)
+
+If the user corrects, disagrees with, or refines any finding during this conversation, evaluate the correction:
+
+1. **Is it universal?** Does this correction apply beyond this specific project? (e.g., "mobile-first prevents RWD retrofit passes" is universal; "our pill toggles use p-[3px]" is project-specific)
+2. **If universal**: Formulate a concise lesson (rule + why + when it applies) and append it to the "Lessons learned" section of this file (`~/.claude/commands/review-design.md`). Verify it doesn't duplicate an existing lesson.
+3. **If project-specific**: Update the project's `review-design.md` memory file instead.
+
+Do this automatically whenever feedback is received — do not wait for the user to run `/review-learn`.
