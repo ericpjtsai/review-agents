@@ -37,16 +37,23 @@ All agents output findings in three tiers:
 
 `/review-all` adds a **Synthesis** (top 5 ranked issues) and a **Verdict** (Ship it / Ship with fixes / Rethink).
 
-## Lessons learned
+## Two-tier memory system
 
-Each agent accumulates lessons in its "Lessons learned" section. Use `/review-learn` to capture new lessons from a session. Lessons are:
-- **Generalizable** -- applies beyond the current project
-- **Actionable** -- tells you what to do, not just what to avoid
-- **Earned** -- came from a real mistake or validated decision
+The agents grow smarter over time through two independent memory layers:
+
+### Project-specific memory (automatic)
+Each agent automatically saves 3-5 observations to the project's auto-memory directory after every review. These capture architecture patterns, known debt, recurring issues, and conventions specific to that project. Next time the agent reviews the same project, it reads these observations for context.
+
+Memory files are stored at `~/.claude/projects/<project>/memory/review-{role}.md` and are scoped per-project -- no cross-contamination between projects.
+
+### Universal lessons (manual promotion)
+Lessons that apply across all projects live in the "Lessons learned" section of each agent file. Use `/review-learn` to promote a project-specific observation into a universal lesson. These are version-controlled in this repo.
+
+**Flow**: Agent reviews project -> saves project observations (auto) -> flags universal candidates -> user runs `/review-learn` to promote (manual) -> hook auto-commits locally -> user pushes when ready.
 
 ## Editing agents
 
-Edit the files in `commands/` directly. Changes take effect immediately in all projects since the global commands are symlinks. Commit changes here to track the evolution of the review system.
+Edit the files in `commands/` directly. Changes take effect immediately in all projects since the global commands are symlinks. A PostToolUse hook auto-commits changes locally. Push manually after reviewing accumulated lessons.
 
 ## Setup on a new machine
 
