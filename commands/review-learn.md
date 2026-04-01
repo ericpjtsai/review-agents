@@ -1,4 +1,6 @@
-Capture a lesson from the current session and append it to the appropriate review agent.
+Capture a **universal** lesson from the current session and append it to the appropriate review agent.
+
+Note: This command is for lessons that apply across all projects. Project-specific observations are saved automatically by each review agent to the project's auto-memory directory — you don't need `/review-learn` for those.
 
 ## Process
 
