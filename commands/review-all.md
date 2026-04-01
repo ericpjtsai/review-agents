@@ -1,10 +1,12 @@
 Run a **three-role review** of the current plan or proposed changes. Each role evaluates independently with full depth, then synthesize.
 
 ## Step 0: Gather project context (do this FIRST, silently)
+**Read past review memory FIRST**: Look for `review-product.md`, `review-design.md`, and `review-eng.md` in the project's auto-memory directory. If any exist, read them — they contain observations from previous reviews of this project. Use these to track whether past issues have been addressed.
+
+Then:
 - Read CLAUDE.md if it exists
 - Run `git log --oneline -20` for recent changes
 - Identify the tech stack, design system, and target users
-- Check for past review memory: look for `review-product.md`, `review-design.md`, and `review-eng.md` in the project's auto-memory directory. If any exist, read them — they contain observations from previous reviews of this project.
 
 ## Step 1: Product Director review
 Read `~/.claude/commands/review-product.md` for the full evaluation framework.
