@@ -123,6 +123,9 @@ Tools like `tsx`, `ts-node`, or CLI binaries that run in production will vanish 
 ### Broad keyword scoring needs a title-level pre-filter to avoid false positives
 When scoring matches generic terms (CRM, AI-powered, data visualization) against job descriptions, non-relevant roles will score highly because their descriptions incidentally contain domain keywords. Always gate on title relevance *before* keyword scoring runs — a blocklist of non-target roles is cheaper and more reliable than tuning score thresholds.
 
+### Extract inline constants on the second occurrence — don't wait for three
+Duplicated literal arrays (status lists, config keys, role names) drift when one copy is updated and others aren't. Extract to a shared constant the moment the same value appears in two files. Waiting for three occurrences guarantees at least one bug from a missed update.
+
 ## Output format
 - **Must fix** — bugs, security issues, data corruption risks, crashes
 - **Should fix** — performance concerns, missing error handling, type safety gaps
