@@ -92,6 +92,9 @@ Browser rendering is inconsistent (Chrome is clunky, Safari barely filters), it 
 ### ARIA attributes belong in the first implementation, not a follow-up
 Every custom interactive component (dropdown, combobox, dialog, tooltip) needs `role`, `aria-expanded`, `aria-activedescendant`, and `aria-label` on its first commit. Retrofitting costs the same effort as doing it upfront, but ships an inaccessible version in the meantime.
 
+### When changing a theme, audit all hardcoded colors in the same commit
+CSS variable changes (e.g., shifting hue from cool to warm) leave hardcoded Tailwind classes (`green-600`, `blue-500`) and hex values (`#22c55e`) untouched — they clash immediately with the new palette. Grep for hardcoded color classes and hex codes before committing a theme change.
+
 ## Output format
 - **Must fix** — broken or confusing interactions, accessibility violations
 - **Should fix** — pattern inconsistencies, missing states, mobile breakage
