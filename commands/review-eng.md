@@ -126,6 +126,18 @@ When scoring matches generic terms (CRM, AI-powered, data visualization) against
 ### Extract inline constants on the second occurrence — don't wait for three
 Duplicated literal arrays (status lists, config keys, role names) drift when one copy is updated and others aren't. Extract to a shared constant the moment the same value appears in two files. Waiting for three occurrences guarantees at least one bug from a missed update.
 
+### System-side timestamps must reflect ingest time, not source time
+Columns like `first_seen`, `created_at`, `ingested_at` represent when **we** saw the row, not when an upstream source produced it. The moment you stamp them with a value from the source payload (`publishedAt`, `posted_date`, `updated_at`), every "today / this week / new" filter silently breaks — fresh inserts land in the wrong window because their stamped time can be days old. Source time, if needed, belongs in a separate column. Trigger: any time you're storing a row that came from an external API and the schema has both an ingest column and a source-time column candidate.
+
+### Async refetches need AbortController when state can resolve mid-flight
+Any UI that fires a fetch on initial render *and* re-fires when async state (auth cookie, feature flag, user prefs) resolves will race: the slower stale request can return after the newer one and clobber it. The result looks like a phantom inconsistency between two views of the same data. Always abort the previous in-flight request before starting a new one. Trigger: a `useEffect` that depends on state that gets reassigned shortly after mount, especially when the same `useCallback` is recreated on dep change.
+
+### A fix in source control isn't a fix in production
+When debugging legacy data that "should" have been validated/sanitized/scored by code that already exists, do not assume the code was running when that data was written. Long-lived services drift from `main`; daemons miss redeploys; cron jobs cache old bundles. Check the data's `created_at` against the fixing commit's deploy time, not its commit time. Trigger: any time current source code contradicts the state of historical data.
+
+### When two views of the same data disagree, query the DB directly
+Stats card vs list view, summary count vs detail count, frontend total vs backend total — when they don't match, do not reason about which is right. Run the underlying query against the DB and let the result decide. Both could be wrong (cache, race, stale state, different filter); guessing wastes cycles and often picks the wrong one to "fix". Trigger: any user report that two numbers from the same source don't add up.
+
 ## Output format
 - **Must fix** — bugs, security issues, data corruption risks, crashes
 - **Should fix** — performance concerns, missing error handling, type safety gaps
