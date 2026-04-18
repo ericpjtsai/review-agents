@@ -23,6 +23,11 @@ Note: This command is for lessons that apply across all projects. Project-specif
 
 5. **Verify** the lesson doesn't duplicate an existing one. If it refines an existing lesson, update it instead of adding a new one.
 
+6. **Ask for consent before publishing.** The PostToolUse hook auto-commits the lesson locally, but does **not** push. Before sending the lesson online, show the user the new lesson text and the commit that was made, then explicitly ask: *"Push this lesson to the remote repository? (yes / no)"*
+   - If **yes** → run `git -C ~/Desktop/review-agents push origin HEAD`
+   - If **no** → leave the commit local; the user can push later
+   - Never push without an explicit affirmative response in the same turn. A prior "yes" from an earlier session does not carry over.
+
 ## Example lessons
 
 **Product**: "Features that show the same data on two pages always get merged. Plan for co-location from the start."
