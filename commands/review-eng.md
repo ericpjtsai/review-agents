@@ -141,6 +141,9 @@ Stats card vs list view, summary count vs detail count, frontend total vs backen
 ### "API X returns T, not U" is guidance to use X correctly, not to avoid it
 When a linter, type error, or reviewer says an API has a different shape than how you used it ("returns an object, not a string"; "expects an array, not a scalar"), find one canonical working example before rewriting to dodge the API. Substituting a simpler/older API (e.g. `ControlType.String` in place of `ControlType.Font`) silences the critique but loses the feature the richer API provides — a whole extended picker, built-in validation, or a consistent state shape. Trigger: any time you're tempted to remove or downgrade an API in response to a shape/type critique rather than adjust your usage.
 
+### Shared string keys belong in a module constant the moment a second caller appears
+When a producer and consumer both hard-code the same string — `dispatchEvent(new CustomEvent("foo-change"))` paired with `addEventListener("foo-change", ...)`, or `localStorage.setItem("theme", ...)` paired with `localStorage.getItem("theme")` — a typo or rename on one side silently breaks the pairing with no compile error. Extract the key to a module-level `const` and import it from both sides the first time the second caller appears (event names, storage keys, query-param names, pub/sub topics, window globals). When imports aren't possible across boundaries (Framer code components, cross-extension contexts), use a named constant in each file so a single grep catches every reference. Trigger: writing the second usage of any string identifier that coordinates two pieces of code.
+
 ## Output format
 - **Must fix** — bugs, security issues, data corruption risks, crashes
 - **Should fix** — performance concerns, missing error handling, type safety gaps
