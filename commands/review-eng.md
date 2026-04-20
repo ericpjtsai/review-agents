@@ -138,6 +138,9 @@ When debugging legacy data that "should" have been validated/sanitized/scored by
 ### When two views of the same data disagree, query the DB directly
 Stats card vs list view, summary count vs detail count, frontend total vs backend total — when they don't match, do not reason about which is right. Run the underlying query against the DB and let the result decide. Both could be wrong (cache, race, stale state, different filter); guessing wastes cycles and often picks the wrong one to "fix". Trigger: any user report that two numbers from the same source don't add up.
 
+### "API X returns T, not U" is guidance to use X correctly, not to avoid it
+When a linter, type error, or reviewer says an API has a different shape than how you used it ("returns an object, not a string"; "expects an array, not a scalar"), find one canonical working example before rewriting to dodge the API. Substituting a simpler/older API (e.g. `ControlType.String` in place of `ControlType.Font`) silences the critique but loses the feature the richer API provides — a whole extended picker, built-in validation, or a consistent state shape. Trigger: any time you're tempted to remove or downgrade an API in response to a shape/type critique rather than adjust your usage.
+
 ## Output format
 - **Must fix** — bugs, security issues, data corruption risks, crashes
 - **Should fix** — performance concerns, missing error handling, type safety gaps
